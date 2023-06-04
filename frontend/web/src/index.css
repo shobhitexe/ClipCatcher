@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap");
+
+html {
+  background-color: #282a42;
+  color: #eaeaff;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
