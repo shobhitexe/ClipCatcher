@@ -1,7 +1,7 @@
 import ytdl from "ytdl-core";
 
 async function getLinkData(req, res) {
-  const link = req.body.link;
+  const link = req.query.link;
 
   const info = await ytdl.getInfo(link);
 
