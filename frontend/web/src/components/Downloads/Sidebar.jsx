@@ -24,9 +24,9 @@ export default function Sidebar() {
     <div
       className={`mt-[50px] ${
         isSidebarOpen
-          ? "pl-6 pr-12 min-w-64"
+          ? "pl-6 pr-12 min-w-64 ss:static absolute"
           : "ss:pl-2 pl-1 ss:pr-3 pr-1 min-w-[80px]"
-      } py-14 bg-sidebar flex flex-col float-left  h-screen gap-10 shadow-lg`}
+      } py-14 bg-sidebar flex flex-col float-left  h-screen gap-10 shadow-lg `}
     >
       <div
         className={`flex gap-5 justify-center cursor-pointer mx-auto font-inter ${

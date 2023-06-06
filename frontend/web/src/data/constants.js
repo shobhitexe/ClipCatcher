@@ -6,8 +6,24 @@ export const navLinks = [
 ];
 
 export const sidebarLinks = [
-  { tittle: "YouTube", image: "/images/sidebar/youtube.svg", link: "" },
-  { tittle: "Instagram", image: "/images/sidebar/instagram.svg", link: "" },
-  { tittle: "Facebook", image: "/images/sidebar/facebook.svg", link: "" },
-  { tittle: "Twitter", image: "/images/sidebar/twitter.svg", link: "" },
+  {
+    tittle: "Instagram",
+    image: "/images/sidebar/instagram.svg",
+    link: "instagram",
+  },
+  {
+    tittle: "YouTube",
+    image: "/images/sidebar/youtube.svg",
+    link: "youtube",
+  },
+  {
+    tittle: "Facebook",
+    image: "/images/sidebar/facebook.svg",
+    link: "facebook",
+  },
+  {
+    tittle: "Twitter",
+    image: "/images/sidebar/twitter.svg",
+    link: "twitter",
+  },
 ];

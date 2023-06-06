@@ -3,6 +3,7 @@
 html {
   background-color: #282a42;
   color: #eaeaff;
+  overflow-x: hidden;
 }
 
 @tailwind base;

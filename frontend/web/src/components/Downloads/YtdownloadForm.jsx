@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { SubmitLink, downloadYtVideo } from "../../utils/download";
+import { SubmitYtLink } from "../../data/api";
 
-export default function YtdownloadForm({ heading }) {
+export default function YtdownloadForm() {
   const [linkData, setLinkData] = useState({ link: "" });
   const [warning, setWarning] = useState({
     show: false,
@@ -45,7 +45,7 @@ export default function YtdownloadForm({ heading }) {
     }
 
     try {
-      const response = await SubmitLink(linkData);
+      const response = await SubmitYtLink(linkData);
       // console.log(response);
       setYtFormats((prev) => ({
         ...prev,
@@ -58,25 +58,25 @@ export default function YtdownloadForm({ heading }) {
     }
   }
 
-  async function fetchDownloadStream(itag, audio) {
-    const downloadResponse = await downloadYtVideo(itag, audio, linkData.link);
+  // async function fetchDownloadStream(itag, audio) {
+  //   const downloadResponse = await downloadYtVideo(itag, audio, linkData.link);
 
-    const blob = new Blob([downloadResponse.data], {
-      type: "video/mp4",
-    });
-    const link = window.URL.createObjectURL(blob);
-    console.log(link);
-  }
+  //   const blob = new Blob([downloadResponse.data], {
+  //     type: "video/mp4",
+  //   });
+  //   const link = window.URL.createObjectURL(blob);
+  //   console.log(link);
+  // }
 
   // console.log(ytFormats.formats);
 
   return (
     <div className="mt-[100px] flex flex-col mx-auto text-center">
       <h1 className="font-inter text-[35px]">
-        Download {heading} Videos in a Snap!
+        Download Youtube Videos in a Snap!
       </h1>
       <p className="font-poppins">
-        Paste the {heading} link below, and our app will quickly convert and
+        Paste the Youtube link below, and our app will quickly convert and
         download the video for you to enjoy offline, anytime, anywhere.
       </p>
       <div className="bg-bgLight py-20 w-[95%] mx-auto rounded-lg mt-10">
@@ -99,7 +99,23 @@ export default function YtdownloadForm({ heading }) {
       </div>
 
       {ytFormats.fetched && (
-        <div className="flex md:flex-row flex-col gap-10 mx-auto mt-[50px] justify-between bg-bgLight p-10 shadow-lg items-center">
+        <p className=" font-inter mt-2 w-[95%] mx-auto text-[15px] bg-bgLight p-5 rounded-sm shadow-md">
+          Due to some issues audio is not availaible for high quality videos for
+          youtube , will soon add feature to merge audio and video in realtime
+          or if you have something better in mind you can contribute at <br />
+          <a
+            href="https://github.com/shobhitexe/ClipCatcher"
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" font-poppins"
+          >
+            https://github.com/shobhitexe/ClipCatcher
+          </a>
+        </p>
+      )}
+
+      {ytFormats.fetched && (
+        <div className="flex md:flex-row flex-col gap-10 mx-auto mt-[10px] justify-between bg-bgLight p-10 shadow-lg items-center">
           <img
             className="w-[200px] h-[113px]"
             src={ytFormats.thumbnail}
@@ -127,9 +143,7 @@ export default function YtdownloadForm({ heading }) {
                   <p>{contentLength}</p>
                   <button
                     className="bg-lightPurple ss:px-3 px-2 py-1 shadow-md rounded-sm"
-                    onClick={() =>
-                      fetchDownloadStream(format.itag, format.hasAudio)
-                    }
+                    onClick={() => window.open(format.url, "_blank")}
                   >
                     Download
                   </button>
@@ -139,8 +153,6 @@ export default function YtdownloadForm({ heading }) {
           </div>
         </div>
       )}
-
-      <img className="" alt="formbase" src="/images/form/formbase.png" />
     </div>
   );
 }

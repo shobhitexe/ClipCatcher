@@ -1,7 +1,6 @@
 import React from "react";
-import { Sidebar, YtdownloadForm } from "../components";
+import { Sidebar, YtdownloadForm, InstaDownloadForm } from "../components";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
-import { sidebarLinks } from "../data/constants";
 
 export default function Downloads() {
   return (
@@ -9,19 +8,13 @@ export default function Downloads() {
       <Sidebar />
       <Outlet />
       <Routes>
+        {" "}
         <Route
           path="/"
-          element={<Navigate to="/downloads/youtube" replace={true} />}
+          element={<Navigate to="/downloads/instagram" replace={true} />}
         />
-        {sidebarLinks.map((link) => {
-          return (
-            <Route
-              key={link.tittle}
-              path={`/${link.tittle}`}
-              element={<YtdownloadForm />}
-            />
-          );
-        })}
+        <Route path="/instagram" element={<InstaDownloadForm />} />
+        <Route path="/youtube" element={<YtdownloadForm />} />
       </Routes>
     </div>
   );
